@@ -280,7 +280,49 @@ namespace wapiAyBPaymentSolutions.Models
             return actionResponse;
         }
 
+        public PermissionsResponse getPermissions()
+        {
+            PermissionsResponse objPermissions = new PermissionsResponse();
 
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connAyBDev"].ConnectionString))
+            {
+                SqlCommand cmdSelUser = new SqlCommand("SELECT ProfileID, ProfileText FROM SecProfile;", connection);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = cmdSelUser.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            objPermissions.ResponseCode = "000";
+                            objPermissions.ResponseMessage = "Proccess complete";
+
+                            List<Profile> listProfiles = new List<Profile>();
+
+                            while (reader.Read())
+                            {
+                                var profile = new Profile();
+                                profile.ProfileId = Int32.Parse(reader["ProfileID"].ToString());
+                                profile.ProfileText = reader["ProfileText"].ToString();
+
+                                listProfiles.Add(profile);
+                            }
+
+                            objPermissions.Profiles = listProfiles;
+
+                        }
+                    }
+                } catch (Exception ex)
+                {
+                    objPermissions.ResponseCode = "001";
+                    objPermissions.ResponseMessage = "Error: " + ex.Message;
+                }
+
+            }
+
+            return objPermissions;
+        }
 
     }
 }

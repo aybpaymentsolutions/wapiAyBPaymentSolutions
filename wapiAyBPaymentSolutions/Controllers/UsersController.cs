@@ -44,5 +44,13 @@ namespace wapiAyBPaymentSolutions.Controllers
             return responseAction.inactivateUser(userID);
         }
 
+
+        [Route("api/Users/permissions")]
+        [HttpGet]
+        public PermissionsResponse getPermissions()
+        {
+            var responseAction = new UsersModel();
+            return responseAction.getPermissions();
+        }
     }
 }

@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Models\JsonClasses\LicenceResponse.cs" />
     <Compile Include="Models\JsonClasses\LoginResponse.cs" />
+    <Compile Include="Models\JsonClasses\PermissionsResponse.cs" />
     <Compile Include="Models\JsonClasses\UserActionResponse.cs" />
     <Compile Include="Models\JsonClasses\UserInfoResponse.cs" />
     <Compile Include="Models\JsonClasses\UsersResponse.cs" />
