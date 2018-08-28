@@ -91,7 +91,7 @@ namespace wapiAyBPaymentSolutions.Models
                     if (userInfoData.UserData.PersonalInfo.UserId == 0)
                     {
                         var storeID = "";
-                        
+
                         SqlCommand cmdSelStore = new SqlCommand("SELECT Store FROM Instalations WHERE InstalationID = @instalation; ", connection);
                         cmdSelStore.Parameters.AddWithValue("@instalation", userInfoData.UserData.PersonalInfo.DeviceId);
 
@@ -114,7 +114,8 @@ namespace wapiAyBPaymentSolutions.Models
                         command.Parameters.AddWithValue("@storeid", storeID);
                         command.Parameters.AddWithValue("@jobtitle", 1);
 
-                    } else
+                    }
+                    else
                     {
                         command.CommandText = "UPDATE Users set " +
                             "FirstName = @fname, " +
@@ -157,15 +158,17 @@ namespace wapiAyBPaymentSolutions.Models
                         {
                             int insertedRecord = Convert.ToInt32(command.ExecuteScalar());
                             actionResponse.IdUser = insertedRecord;
-                        } else
+                        }
+                        else
                         {
                             int updatedRecord = command.ExecuteNonQuery();
                         }
 
                         actionResponse.ResponseCode = "000";
                         actionResponse.ResponseMessage = "User saved";
-                            
-                    } catch (SqlException sqlex)
+
+                    }
+                    catch (SqlException sqlex)
                     {
                         actionResponse.ResponseCode = "001";
                         actionResponse.ResponseMessage = "Error: " + sqlex.Message;
@@ -232,13 +235,15 @@ namespace wapiAyBPaymentSolutions.Models
                                 userInfo.UserData = user;
 
                             }
-                        } else
+                        }
+                        else
                         {
                             userInfo.ResponseCode = "002";
                             userInfo.ResponseMessage = "User doesn't exist";
                         }
                     }
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     userInfo.ResponseCode = "001";
                     userInfo.ResponseMessage = "Error: " + ex.Message;
@@ -313,7 +318,8 @@ namespace wapiAyBPaymentSolutions.Models
 
                         }
                     }
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     objPermissions.ResponseCode = "001";
                     objPermissions.ResponseMessage = "Error: " + ex.Message;
@@ -324,5 +330,93 @@ namespace wapiAyBPaymentSolutions.Models
             return objPermissions;
         }
 
+
+        public OptionsResponse getOptions(int profileID)
+        {
+            OptionsResponse objOptions = new OptionsResponse();
+
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connAyBDev"].ConnectionString))
+            {
+                string sqlQuery = "SELECT mdl.ModuleID, mdl.ModuleText, opt.OptionID, opt.OptionText, prf.Enabled " +
+                    "FROM SecModules mdl," +
+                    "SecOptions opt," +
+                    "SecProfileOptions prf " +
+                    "WHERE mdl.ModuleID = opt.ModuleID " +
+                    "AND opt.OptionID = prf.OptionID " +
+                    "AND prf.ProfileID = " + profileID + " order by mdl.ModuleID asc";
+
+
+                SqlCommand cmdGetOptions = new SqlCommand(sqlQuery, connection);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = cmdGetOptions.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            objOptions.ResponseCode = "000";
+                            objOptions.ResponseMessage = "Proccess complete";
+
+                            DataTable dtOptions = new DataTable("Options");
+                            dtOptions.Load(reader);
+
+                            List<Option> listModules = new List<Option>();
+
+                            int currentModule = 1;
+                            int recentModule = 0;
+                            string currentModuleText = "";
+
+
+                            foreach (DataRow rowdt in dtOptions.Rows)
+                            {
+                                currentModule = Int32.Parse(rowdt["ModuleID"].ToString());
+                                currentModuleText = rowdt["ModuleText"].ToString();
+
+                                if (currentModule != recentModule)
+                                {
+                                    Option objModule = new Option();
+                                    objModule.ModuleId = currentModule;
+                                    objModule.ModuleName = currentModuleText;
+
+                                    List<OptionsList> objListOption = new List<OptionsList>();
+
+                                    var filteredDataTable = dtOptions.Select("ModuleID = " + currentModule);
+                                    foreach (DataRow rowFiltered in filteredDataTable)
+                                    {
+                                        OptionsList objOptionList = new OptionsList();
+
+                                        objOptionList.OptionId = Int32.Parse(rowFiltered["OptionID"].ToString());
+                                        objOptionList.OptionText = rowFiltered["OptionText"].ToString();
+                                        objOptionList.Enabled = Int32.Parse(rowFiltered["Enabled"].ToString());
+
+                                        objListOption.Add(objOptionList);
+                                    }
+
+                                    objModule.OptionsList = objListOption;
+                                    recentModule = currentModule;
+                                    listModules.Add(objModule);
+
+                                }
+
+                            }
+
+                            objOptions.Options = listModules;
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    objOptions.ResponseCode = "001";
+                    objOptions.ResponseMessage = "Error: " + ex.Message;
+                }
+
+                return objOptions;
+            }
+
+        }
     }
+
 }

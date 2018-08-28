@@ -49,6 +49,12 @@ namespace wapiAyBPaymentSolutions
                 routeTemplate: "api/{controller}/permissions"
             );
 
+            config.Routes.MapHttpRoute(
+                name: "getOptions",
+                routeTemplate: "api/{controller}/options/{profileID}",
+                defaults: new { profileID = RouteParameter.Optional }
+            );
+
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }

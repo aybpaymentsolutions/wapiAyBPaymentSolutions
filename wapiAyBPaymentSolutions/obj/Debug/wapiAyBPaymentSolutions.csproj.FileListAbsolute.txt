@@ -63,3 +63,9 @@ C:\Users\carlo\source\repos\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\
 C:\Users\carlo\source\repos\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Debug\wapiAyBPaymentSolutions.csproj.CopyComplete
 C:\Users\carlo\source\repos\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Debug\wapiAyBPaymentSolutions.dll
 C:\Users\carlo\source\repos\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Debug\wapiAyBPaymentSolutions.pdb
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\System.IO.Compression.dll
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\roslyn\VBCSCompiler.exe
