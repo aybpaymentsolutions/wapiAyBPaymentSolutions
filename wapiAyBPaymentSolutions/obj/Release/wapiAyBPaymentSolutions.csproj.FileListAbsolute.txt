@@ -129,6 +129,7 @@ C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj
 C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Release\wapiAyBPaymentSolutions.csproj.CopyComplete
 C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Release\wapiAyBPaymentSolutions.dll
 C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Release\wapiAyBPaymentSolutions.pdb
+<<<<<<< Updated upstream
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\wapiAyBPaymentSolutions.dll.config
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\wapiAyBPaymentSolutions.dll
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\wapiAyBPaymentSolutions.pdb
@@ -199,3 +200,6 @@ C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolution
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\EntityFramework.SqlServer.dll
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\EntityFramework.xml
 C:\Users\Bayron Rodezno\Documents\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\bin\EntityFramework.SqlServer.xml
+=======
+C:\Users\carlo\Documents\git\wapiAyBPaymentSolutions\wapiAyBPaymentSolutions\obj\Release\wapiAyBPaymentSolutions.csprojAssemblyReference.cache
+>>>>>>> Stashed changes
