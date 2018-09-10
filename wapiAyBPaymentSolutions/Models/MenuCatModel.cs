@@ -28,11 +28,11 @@ namespace wapiAyBPaymentSolutions.Models
                         {
                             categoriesResponse.ResponseCode = "000";
                             categoriesResponse.ResponseMessage = "Proccess complete";
-                            List<InfoCategories> listCategories = new List<InfoCategories>();
+                            List<InfoCategory> listCategories = new List<InfoCategory>();
 
                             while (reader.Read())
                             {
-                                var category = new InfoCategories();
+                                var category = new InfoCategory();
                                 category.MenuCategoryID = Int32.Parse(reader["MenuCategoryID"].ToString());
                                 category.MenuCategoryText = reader["MenuCategoryText"].ToString();
                                 category.MenuCategoryInActive = Boolean.Parse(reader["MenuCategoryInActive"].ToString());
@@ -41,7 +41,7 @@ namespace wapiAyBPaymentSolutions.Models
                                 listCategories.Add(category);
                             }
 
-                            categoriesResponse.InfoCategories = listCategories;
+                            categoriesResponse.InfoCategory = listCategories;
 
                         }
                         else

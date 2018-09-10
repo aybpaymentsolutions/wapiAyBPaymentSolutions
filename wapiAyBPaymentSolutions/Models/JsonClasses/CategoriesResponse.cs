@@ -18,11 +18,11 @@ namespace wapiAyBPaymentSolutions.Models.JsonClasses
         [JsonProperty("responseMessage")]
         public string ResponseMessage { get; set; }
 
-        [JsonProperty("infoCategories")]
-        public List<InfoCategories> InfoCategories { get; set; }
+        [JsonProperty("infoCategory")]
+        public List<InfoCategory> InfoCategory { get; set; }
     }
 
-    public partial class InfoCategories
+    public partial class InfoCategory
     {
         [JsonProperty("MenuCategoryID")]
         public int MenuCategoryID { get; set; }
