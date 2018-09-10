@@ -19,7 +19,7 @@ namespace wapiAyBPaymentSolutions.Models
             {
                 using (SqlCommand command = new SqlCommand())
                 {
-                    SqlCommand cmdSelUser = new SqlCommand("SELECT usr.UsersID, usr.FirstName, usr.LastName, usr.AccessCode, usr.InstalationID, usr.JobTitleID, usr.EmployeeInActive, " +
+                    SqlCommand cmdSelUser = new SqlCommand("SELECT usr.UsersID, usr.FirstName, usr.LastName, usr.AccessCode, usr.InstalationID, usr.JobTitleID, usr.EmployeeInActive, usr.STOREID, " +
                         "(SELECT STORENAME FROM STORES WHERE STOREID = usr.STOREID) StoreName FROM USERS usr WHERE InstalationID = '" + deviceID+"' AND AccessCode = '"+pinCode+"'", connection);
 
                     try
@@ -39,7 +39,8 @@ namespace wapiAyBPaymentSolutions.Models
                                 userResponse.deviceID = reader[4].ToString();
                                 userResponse.Rol = reader[5].ToString();
                                 userResponse.Status = reader[6].ToString();
-                                userResponse.StoreName = reader[7].ToString();
+                                userResponse.StoreID = reader[7].ToString();
+                                userResponse.StoreName = reader[8].ToString();
 
                                 loginResponse.InfoUser = userResponse;
                             }

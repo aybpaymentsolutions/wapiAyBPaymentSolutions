@@ -38,6 +38,9 @@ namespace wapiAyBPaymentSolutions.Models.JsonClasses
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("storeID")]
+        public string StoreID { get; set; }
+
         [JsonProperty("storename")]
         public string StoreName { get; set; }
     }

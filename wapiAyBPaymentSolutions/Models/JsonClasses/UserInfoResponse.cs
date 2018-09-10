@@ -31,6 +31,9 @@ namespace wapiAyBPaymentSolutions.Models.JsonClasses
 
         [JsonProperty("contactInfo")]
         public ContactInfo ContactInfo { get; set; }
+
+        [JsonProperty("permissionInfo")]
+        public PermissionInfo PermissionInfo { get; set; }
     }
 
     public partial class ContactInfo
@@ -89,4 +92,15 @@ namespace wapiAyBPaymentSolutions.Models.JsonClasses
         [JsonProperty("payrate")]
         public decimal PayRate { get; set; }
     }
+
+    public partial class PermissionInfo
+    {
+        [JsonProperty("profileID")]
+        public long ProfileId { get; set; }
+
+        [JsonProperty("options")]
+        public List<Option> Options { get; set; }
+
+    }
+
 }
