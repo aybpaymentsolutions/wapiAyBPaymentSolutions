@@ -17,7 +17,7 @@ namespace wapiAyBPaymentSolutions.Models
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connAyBDev"].ConnectionString))
             {
-                SqlCommand cmdSqlCategories = new SqlCommand("SELECT MenuCategoryID, MenuCategoryText, MenuCategoryInActive, StoreID FROM MenuCategories WHERE StoreID = '" + StoreID + "'", connection);
+                SqlCommand cmdSqlCategories = new SqlCommand("SELECT MenuCategoryID, MenuCategoryText, (CASE WHEN MenuCategoryInActive = 1 THEN 'Active' ELSE 'InActive' END) AS MenuCategoryInActive, StoreID FROM MenuCategories WHERE StoreID = '" + StoreID + "'", connection);
 
                 try
                 {
@@ -35,7 +35,7 @@ namespace wapiAyBPaymentSolutions.Models
                                 var category = new InfoCategory();
                                 category.MenuCategoryID = Int32.Parse(reader["MenuCategoryID"].ToString());
                                 category.MenuCategoryText = reader["MenuCategoryText"].ToString();
-                                category.MenuCategoryInActive = Boolean.Parse(reader["MenuCategoryInActive"].ToString());
+                                category.MenuCategoryInActive = reader["MenuCategoryInActive"].ToString();
                                 category.StoreID = reader["StoreID"].ToString();
 
                                 listCategories.Add(category);
